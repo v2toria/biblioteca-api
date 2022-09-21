@@ -1,5 +1,7 @@
 package com.biblioteca.bibliotecaapi.modelos;
 
+import com.biblioteca.bibliotecaapi.dto.AutorDto;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +18,21 @@ public class Autor {
 
     @OneToMany(mappedBy = "autor")
     private List<Livro> livros = new ArrayList<>();
+
+    public Autor() {
+
+    }
+
+    public Autor(AutorDto autorDto){
+        this.nome = autorDto.getNome();
+        this.idade = autorDto.getIdade();
+        this.nacionalidade = autorDto.getNacionalidade();
+    }
+
+
+    public Long getId() {
+        return id;
+    }
 
     public String getNome() {
         return nome;
